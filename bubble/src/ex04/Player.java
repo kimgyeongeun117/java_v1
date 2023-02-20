@@ -1,4 +1,4 @@
-package ex03;
+package ex04;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -61,6 +61,24 @@ public class Player extends JLabel implements Moveable {
 
 	public boolean isRight() {
 		return right;
+	}
+	
+	
+
+	public boolean isUp() {
+		return up;
+	}
+
+	public void setUp(boolean up) {
+		this.up = up;
+	}
+
+	public boolean isDown() {
+		return down;
+	}
+
+	public void setDown(boolean down) {
+		this.down = down;
 	}
 
 	private void initData() {
@@ -165,16 +183,12 @@ public class Player extends JLabel implements Moveable {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				for (int i = 0; i < 130 / JUMPSPEED; i++) {
-					y = y + JUMPSPEED;
+				
+				while(down) {
+					y = y+ JUMPSPEED;
 					setLocation(x, y);
-					try {
-						Thread.sleep(3);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				down = false;
+					down = false;
+				}	//end of while
 				// 상태 값 다룰 때는 상황이 변화면 초기화 처리를 잘하자!
 			}
 		}).start();

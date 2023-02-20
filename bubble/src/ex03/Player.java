@@ -1,4 +1,4 @@
-package ex02;
+package ex03;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -14,6 +14,10 @@ public class Player extends JLabel implements Moveable {
 	private boolean right;
 	private boolean up;
 	private boolean down;
+	
+	// 벽에 충돌한 상태
+	private boolean leftWallCrash;
+	private boolean rightWallCrash;
 
 	// 플레이어의 속도 상태
 	private final int SPEED = 4;
@@ -23,6 +27,9 @@ public class Player extends JLabel implements Moveable {
 		initData();
 		setInitLayout();
 	}
+	
+	//getter 메서드 추가 left,right, isLeftWallCrash추가 isRightWallCrash 추가
+	
 
 	public void setLeft(boolean left) {
 		this.left = left;
@@ -30,6 +37,30 @@ public class Player extends JLabel implements Moveable {
 
 	public void setRight(boolean right) {
 		this.right = right;
+	}
+	
+	public boolean isLeftWallCrash() {
+		return leftWallCrash;
+	}
+
+	public void setLeftWallCrash(boolean leftWallCrash) {
+		this.leftWallCrash = leftWallCrash;
+	}
+
+	public boolean isRightWallCrash() {
+		return rightWallCrash;
+	}
+
+	public void setRightWallCrash(boolean rightWallCrash) {
+		this.rightWallCrash = rightWallCrash;
+	}
+
+	public boolean isLeft() {
+		return left;
+	}
+
+	public boolean isRight() {
+		return right;
 	}
 
 	private void initData() {
@@ -40,10 +71,12 @@ public class Player extends JLabel implements Moveable {
 		right = false;
 		up = false;
 		down = false;
+		leftWallCrash = false;
+		rightWallCrash = false;
 	}
 
 	private void setInitLayout() {
-		x = 55;
+		x = 500;
 		y = 535;
 		// 좌표기반, 라벨의 크기를 지정해야 한다.
 		setSize(50, 50);

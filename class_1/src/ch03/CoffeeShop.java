@@ -27,7 +27,7 @@ public class CoffeeShop {
 		System.out.println("커피를 선택하세요");
 		int orderNumber = scanner.nextInt();
 
-		// 어떤 커피를 선택하영ㅆ는지 알 수 있는 코드를 작성 해보면
+		// 어떤 커피를 선택하였는지 알 수 있는 코드를 작성 해보면
 		Coffee coffee = coffees[orderNumber - 1];
 		// 고객이 커피를 사다 ...
 		customer.buyCoffee(coffee);
